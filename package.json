@@ -1,0 +1,27 @@
+{
+  "name": "nosql-social-network-api",
+  "version": "1.0.0",
+  "description": "This application is for creating an API for a social network  where users can share their thoughts, react to friends' thoughts, and create a friend list.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SumaiaSorna/nosql-social-network-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SumaiaSorna/nosql-social-network-api/issues"
+  },
+  "homepage": "https://github.com/SumaiaSorna/nosql-social-network-api#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
