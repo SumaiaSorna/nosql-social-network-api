@@ -15,7 +15,7 @@ router.get("/", getThoughts);
 router.get("/:thoughtId", getThoughtById);
 router.post("/", createThought);
 router.put("/:thoughtId", updateThoughtById);
-router.delete("/", deleteThoughtById);
+router.delete("/:thoughtId", deleteThoughtById);
 
 router.use("/:thoughtId/reactions", reactions);
 
