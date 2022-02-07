@@ -1,6 +1,29 @@
 const { Schema, model } = require("mongoose");
 
-const userSchema = {};
+const thoughts = require("./Thought");
+const friends = require("./Friend");
+
+const userSchema = {
+  userName: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    match: true,
+  },
+  thoughts: [
+    {
+      type: Schema.Types.ObjectID,
+      ref: "Thought",
+    },
+  ],
+  friends: [friends],
+};
 
 const schema = new Schema(userSchema);
 
