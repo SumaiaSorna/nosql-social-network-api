@@ -11,7 +11,7 @@ const userSchema = {
     type: String,
     unique: true,
     required: true,
-    match: true,
+    trim: true,
   },
   thoughts: [
     {
@@ -29,6 +29,6 @@ const userSchema = {
 
 const schema = new Schema(userSchema);
 
-const User = model("user", schema);
+const User = model("User", schema);
 
 module.exports = User;

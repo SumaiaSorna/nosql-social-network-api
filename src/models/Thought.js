@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
-const moment = require("moment");
+const reactionSchema = require("./Reaction");
 
-const formatTimestamp = require("../utils/index");
+const formatTimestamp = require("../utils");
 
 const thoughtSchema = {
   thoughtText: {
@@ -13,7 +13,7 @@ const thoughtSchema = {
 
   createdAt: {
     type: Date,
-    default: moment(),
+    default: Date.now(),
     get: formatTimestamp,
   },
 
@@ -22,12 +22,7 @@ const thoughtSchema = {
     required: true,
   },
 
-  reactions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Reaction",
-    },
-  ],
+  reactions: [reactionSchema],
 };
 
 const schema = new Schema(thoughtSchema, {
@@ -37,6 +32,6 @@ const schema = new Schema(thoughtSchema, {
   id: false,
 });
 
-const Thought = model("thought", schema);
+const Thought = model("Thought", schema);
 
 module.exports = Thought;

@@ -4,20 +4,20 @@ const users = [
     email: "bobsmith@email.com",
   },
   {
-    username: "bobsmith",
-    email: "bobsmith@email.com",
+    username: "janesmith",
+    email: "janesmith@email.com",
   },
   {
-    username: "bobsmith",
-    email: "bobsmith@email.com",
+    username: "mikesmith",
+    email: "mikesmith@email.com",
   },
   {
-    username: "bobsmith",
-    email: "bobsmith@email.com",
+    username: "dennysmith",
+    email: "dennysmith@email.com",
   },
   {
-    username: "bobsmith",
-    email: "bobsmith@email.com",
+    username: "lennysmith",
+    email: "lennysmith@email.com",
   },
 ];
 
