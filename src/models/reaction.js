@@ -1,6 +1,6 @@
 const { Schema } = require("mongoose");
 
-const formatTimestamp = require("../utils/index");
+const formatTimestamp = require("../utils");
 
 const reactionSchema = {
   reactionId: {
