@@ -1,10 +1,11 @@
 const { Schema, model } = require("mongoose");
 const moment = require("moment");
+
 const formatTimestamp = require("../utils/index");
 
 const reactions = require("./Reaction");
 
-const thoughSchema = {
+const thoughtSchema = {
   thoughtText: {
     type: String,
     required: true,
@@ -15,7 +16,6 @@ const thoughSchema = {
   createdAt: {
     type: Date,
     default: moment(),
-    required: true,
     get: formatTimestamp,
   },
 
@@ -32,8 +32,6 @@ const schema = new Schema(thoughtSchema, {
   },
   id: false,
 });
-
-const schema = new Schema(thoughSchema);
 
 const Thought = model("thought", schema);
 
