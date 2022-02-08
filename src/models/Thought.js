@@ -3,8 +3,6 @@ const moment = require("moment");
 
 const formatTimestamp = require("../utils/index");
 
-const reactions = require("./Reaction");
-
 const thoughtSchema = {
   thoughtText: {
     type: String,
@@ -23,7 +21,13 @@ const thoughtSchema = {
     type: String,
     required: true,
   },
-  reactions: [reactions],
+
+  reactions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Reaction",
+    },
+  ],
 };
 
 const schema = new Schema(thoughtSchema, {

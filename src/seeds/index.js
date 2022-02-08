@@ -1,15 +1,7 @@
-const express = require("express");
 const mongoose = require("mongoose");
 
-const routes = require("./routes");
-
-const PORT = 4000;
-
-const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(routes);
+const { User } = require("../models");
+const users = require("./data/users");
 
 const init = async () => {
   try {
@@ -20,9 +12,12 @@ const init = async () => {
 
     console.log("[INFO]: Database connection successful");
 
-    app.listen(PORT, () =>
-      console.log(` Server running on 🚀🚀 http://localhost:${PORT}`)
-    );
+    await User.deleteMany({});
+    await User.insertMany(users);
+
+    console.log("[INFO]: Successfully seeded users");
+
+    await mongoose.disconnect();
   } catch (error) {
     console.log(`[ERROR]: Database connection failed | ${error.message}`);
   }
