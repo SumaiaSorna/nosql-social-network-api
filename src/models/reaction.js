@@ -1,10 +1,11 @@
-const { Schema } = require("mongoose");
+const { Schema, Types } = require("mongoose");
 
 const formatTimestamp = require("../utils");
 
 const reactionSchema = {
   reactionId: {
     type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId(),
   },
 
   reactionBody: {

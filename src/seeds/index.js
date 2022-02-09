@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-const { User } = require("../models");
+const { User, Thought } = require("../models");
 const users = require("./data/users");
+const thoughts = require("./data/thoughts");
 
 const init = async () => {
   try {
@@ -16,6 +17,29 @@ const init = async () => {
     await User.insertMany(users);
 
     console.log("[INFO]: Successfully seeded users");
+
+    const usersFromDb = await User.find({});
+
+    // console.log(usersFromDb);
+    // console.log(thoughts);
+
+    // usersFromDb.forEach((user) => {
+    //   const userId = user._id.toString();
+
+    //   console.log(userId);
+
+    //   const randomThought =
+    //     thoughts[Math.floor(Math.random() * thoughts.length)];
+
+    //   randomThought.users.push(userId);
+
+    //   console.log(randomThought);
+    // });
+
+    await Thought.deleteMany({});
+    await Thought.insertMany(thoughts);
+
+    console.log("[INFO]: Successfully seeded thoughts");
 
     await mongoose.disconnect();
   } catch (error) {

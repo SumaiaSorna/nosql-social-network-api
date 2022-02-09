@@ -4,19 +4,16 @@ const thoughts = [
     username: "bobsmith",
     reactions: [
       {
-        reactionId: "123",
         reactionBody: "Yes I agree with you!!",
         username: "janesmith",
       },
       {
-        reactionId: "456",
         reactionBody: "Yup agree",
-        username: "tomsmith",
+        username: "mikesmith",
       },
       {
-        reactionId: "789",
         reactionBody: "I am struggling with NoSQL",
-        username: "jacksmith",
+        username: "dennysmith",
       },
     ],
   },
