@@ -27,7 +27,7 @@ const init = async () => {
 
     const thoughtFromDb = await Thought.find({});
 
-    thoughtFromDb.map(async (thought) => {
+    const promises = thoughtFromDb.map(async (thought) => {
       const userName = thought.username;
       const user = usersFromDb.find((user) => user.userName == userName);
 
@@ -42,7 +42,9 @@ const init = async () => {
       // console.log(userId.toString());
     });
 
-    usersFromDb.map(async (currentUser) => {
+    await Promise.all(promises);
+
+    const promise = usersFromDb.map(async (currentUser) => {
       const userName = currentUser.userName;
       //console.log(userName);
 
@@ -58,11 +60,8 @@ const init = async () => {
       await User.findByIdAndUpdate(currentUserId, { ...currentUser });
     });
 
-    // const sampleUsers = await User.find({})
-    //   .populate("friends")
-    //   .populate("thoughts");
-
-    // console.log(JSON.stringify(sampleUsers));
+    await Promise.all(promise);
+    await mongoose.disconnect();
   } catch (error) {
     console.log(`[ERROR]: Database connection failed | ${error.message}`);
   }
