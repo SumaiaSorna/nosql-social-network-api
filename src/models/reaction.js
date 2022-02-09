@@ -5,7 +5,6 @@ const formatTimestamp = require("../utils");
 const reactionSchema = {
   reactionId: {
     type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId(),
   },
 
   reactionBody: {
@@ -22,7 +21,7 @@ const reactionSchema = {
   createdAt: {
     type: Date,
     default: Date.now(),
-    get: formatTimestamp,
+    // get: formatTimestamp,
   },
 };
 

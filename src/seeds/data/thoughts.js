@@ -17,6 +17,42 @@ const thoughts = [
       },
     ],
   },
+  {
+    thoughtText: "SQL is super easy",
+    username: "janesmith",
+    reactions: [
+      {
+        reactionBody: "Yes I agree with you!!",
+        username: "janesmith",
+      },
+      {
+        reactionBody: "Yup agree",
+        username: "mikesmith",
+      },
+      {
+        reactionBody: "I am struggling with NoSQL",
+        username: "dennysmith",
+      },
+    ],
+  },
+  {
+    thoughtText: "Handlebars are nice to use",
+    username: "mikesmith",
+    reactions: [
+      {
+        reactionBody: "Yes I agree with you!!",
+        username: "janesmith",
+      },
+      {
+        reactionBody: "Yup agree",
+        username: "mikesmith",
+      },
+      {
+        reactionBody: "I am struggling with NoSQL",
+        username: "dennysmith",
+      },
+    ],
+  },
 ];
 
 module.exports = thoughts;
