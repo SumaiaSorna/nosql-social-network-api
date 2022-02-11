@@ -1,6 +1,7 @@
-const formatTimestamp = (createdAt) => {
-  const formatTime = moment(createdAt, "MMMM Do YYYY, h:mm:ss a");
-  return formatTime;
+const { format } = require("date-fns");
+
+const formatTime = (date) => {
+  return format(date, "dd-MM-yyyy HH:mm");
 };
 
-module.exports = formatTimestamp;
+module.exports = { formatTime };
