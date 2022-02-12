@@ -46,7 +46,7 @@ const createUser = async (req, res) => {
   }
 };
 
-const updateUserById = (req, res) => {
+const updateUserById = async (req, res) => {
   const { userId } = req.params;
 
   console.log("userId", userId);
@@ -54,12 +54,20 @@ const updateUserById = (req, res) => {
   res.send("updateUserById");
 };
 
-const deleteUserById = (req, res) => {
-  const { userId } = req.params;
+const deleteUserById = async (req, res) => {
+  try {
+    const { userId } = req.params;
 
-  console.log("userId", userId);
-
-  res.send("deleteUserById");
+    const user = await User.findByIdAndDelete({ _id: userId }).populate(
+      "thoughts"
+    );
+    return res.json({ success: true, data: user });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to delete user | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to delete user" });
+  }
 };
 
 module.exports = {
