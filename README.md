@@ -25,6 +25,8 @@ Click [here](https://github.com/SumaiaSorna/nosql-social-network-api/tree/dev) t
 
 ## Description
 
+Nosql social network api is a backend application,creating an API for a social network where users can share their thoughts, react to friends' thoughts, and create a friend list.
+
 ## Getting Started
 
 ### User Story
