@@ -27,7 +27,24 @@ const getThoughtById = async (req, res) => {
 };
 
 const createThought = async (req, res) => {
-  res.send("createThought");
+  try {
+    const { thoughtText, username } = req.body;
+
+    if (thoughtText && username) {
+      const newThought = await Thought.create({ thoughtText, username });
+      return res.json({ success: true, data: newThought });
+    }
+
+    return res.status(400).json({
+      success: false,
+      error: "Please provide the thoughtText and username",
+    });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to create newThought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create newThought" });
+  }
 };
 
 const updateThoughtById = async (req, res) => {
