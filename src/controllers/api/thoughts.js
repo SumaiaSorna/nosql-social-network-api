@@ -48,11 +48,22 @@ const createThought = async (req, res) => {
 };
 
 const updateThoughtById = async (req, res) => {
-  const { thoughtId } = req.params;
+  try {
+    const { thoughtId } = req.params;
+    const { thoughtText, username } = req.body;
 
-  console.log("thoughtId", thoughtId);
+    const updateThought = await Thought.findByIdAndUpdate(thoughtId, {
+      thoughtText,
+      username,
+    });
 
-  res.send("updateThoughtById");
+    return res.json({ success: true, data: updateThought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to update thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create update thought" });
+  }
 };
 
 const deleteThoughtById = async (req, res) => {
