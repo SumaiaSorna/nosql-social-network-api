@@ -20,12 +20,22 @@ const createFriendForUser = async (req, res) => {
 };
 
 const deleteFriendByUser = async (req, res) => {
-  const { userId, friendId } = req.params;
-
-  console.log("userId", userId);
-  console.log("friendId", friendId);
-
-  res.send("deleteFriendByUser");
+  try {
+    const { userId, friendId } = req.params;
+    const deleteFriend = await User.findByIdAndUpdate(
+      userId,
+      {
+        $pull: { friends: { $in: [friendId] } },
+      },
+      { new: true }
+    );
+    return res.json({ success: true, deleteFriend });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to delete friend | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to delete friend" });
+  }
 };
 
 module.exports = { createFriendForUser, deleteFriendByUser };
