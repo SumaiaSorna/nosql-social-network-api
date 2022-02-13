@@ -12,19 +12,25 @@ const getThoughts = async (req, res) => {
   }
 };
 
-const getThoughtById = (req, res) => {
-  const { thoughtId } = req.params;
+const getThoughtById = async (req, res) => {
+  try {
+    const { thoughtId } = req.params;
 
-  console.log("thoughtId", thoughtId);
-
-  res.send("getThoughtById");
+    const thought = await Thought.findById(thoughtId);
+    return res.json({ success: true, data: thought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to get thought" });
+  }
 };
 
-const createThought = (req, res) => {
+const createThought = async (req, res) => {
   res.send("createThought");
 };
 
-const updateThoughtById = (req, res) => {
+const updateThoughtById = async (req, res) => {
   const { thoughtId } = req.params;
 
   console.log("thoughtId", thoughtId);
@@ -32,7 +38,7 @@ const updateThoughtById = (req, res) => {
   res.send("updateThoughtById");
 };
 
-const deleteThoughtById = (req, res) => {
+const deleteThoughtById = async (req, res) => {
   const { thoughtId } = req.params;
 
   console.log("thoughtId", thoughtId);
