@@ -1,7 +1,7 @@
-const createFriendForUser = (req, res) => {
+const createFriendForUser = async (req, res) => {
   res.send("createFriendForUser");
 };
-const deleteFriendByUser = (req, res) => {
+const deleteFriendByUser = async (req, res) => {
   const { userId, friendId } = req.params;
 
   console.log("userId", userId);
