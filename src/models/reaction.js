@@ -5,6 +5,8 @@ const { formatTime } = require("../utils");
 const reactionSchema = {
   reactionId: {
     type: Schema.Types.ObjectId,
+    required: true,
+    auto: true,
   },
 
   reactionBody: {
@@ -29,7 +31,6 @@ const schema = new Schema(reactionSchema, {
   toJSON: {
     getters: true,
   },
-  id: false,
 });
 
 module.exports = schema;

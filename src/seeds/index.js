@@ -29,7 +29,7 @@ const init = async () => {
 
     const promises = thoughtFromDb.map(async (thought) => {
       const userName = thought.username;
-      const user = usersFromDb.find((user) => user.userName == userName);
+      const user = usersFromDb.find((user) => user.userName === userName);
 
       const userId = user._id.toString();
 
@@ -38,18 +38,14 @@ const init = async () => {
       user.thoughts.push(thoughtId.toString());
 
       await User.findByIdAndUpdate(userId, { ...user });
-
-      // console.log(userId.toString());
     });
 
     await Promise.all(promises);
 
     const promise = usersFromDb.map(async (currentUser) => {
       const userName = currentUser.userName;
-      //console.log(userName);
 
       const users = usersFromDb.filter((user) => user.userName != userName);
-      // console.log(users);
 
       const currentUserId = currentUser._id.toString();
 

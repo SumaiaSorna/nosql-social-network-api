@@ -47,11 +47,22 @@ const createUser = async (req, res) => {
 };
 
 const updateUserById = async (req, res) => {
-  const { userId } = req.params;
+  try {
+    const { userId } = req.params;
+    const { userName, email } = req.body;
 
-  console.log("userId", userId);
+    const updateUser = await User.findByIdAndUpdate(userId, {
+      userName,
+      email,
+    });
 
-  res.send("updateUserById");
+    return res.json({ success: true, data: updateUser });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to update user | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to create update user" });
+  }
 };
 
 const deleteUserById = async (req, res) => {
