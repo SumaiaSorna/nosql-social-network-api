@@ -58,9 +58,7 @@ const deleteUserById = async (req, res) => {
   try {
     const { userId } = req.params;
 
-    const user = await User.findByIdAndDelete({ _id: userId }).populate(
-      "thoughts"
-    );
+    const user = await User.findByIdAndDelete({ _id: userId });
     return res.json({ success: true, data: user });
   } catch (error) {
     console.log(`[ERROR]: Failed to delete user | ${error.message}`);
