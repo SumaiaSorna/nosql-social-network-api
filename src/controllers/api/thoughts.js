@@ -67,11 +67,17 @@ const updateThoughtById = async (req, res) => {
 };
 
 const deleteThoughtById = async (req, res) => {
-  const { thoughtId } = req.params;
+  try {
+    const { thoughtId } = req.params;
 
-  console.log("thoughtId", thoughtId);
-
-  res.send("deleteThoughtById");
+    const deleteThought = await Thought.findByIdAndDelete({ _id: thoughtId });
+    return res.json({ success: true, data: deleteThought });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to delete user | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to delete user" });
+  }
 };
 
 module.exports = {
