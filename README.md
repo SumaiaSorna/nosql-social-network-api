@@ -1,6 +1,6 @@
 ## Nosql Social Network API ![MIT](https://img.shields.io/static/v1?label=MIT&message=License&color=maroon)
 
-![#nosql-social-network-api-gif](./assets/gif/#)
+![#nosql-social-network-api-gif](./assets/gif/nosql-social-network-api.gif)
 
 ## Link to Repository
 
