@@ -4,7 +4,7 @@
 
 ## Link to Repository
 
-Click [here](https://github.com/SumaiaSorna/nosql-social-network-api/tree/dev) to view deployed application on Github page.
+Click [here](https://sumaiasorna.github.io/nosql-social-network-api/) to view deployed application on Github page.
 
 ## Link to Walkthrough video
 
