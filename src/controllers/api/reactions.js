@@ -4,17 +4,20 @@ const createReactionForThought = async (req, res) => {
   try {
     //get thought id from req params
     const { thoughtId } = req.params;
+    const { _id } = req.body;
 
     //push new reaction inside the reactions array for that thought id
-    const newReaction = await Thought.findByIdAndUpdate(
-      thoughtId,
-      {
-        $push: { reactions: { ...req.body } },
-      },
-      { new: true }
-    );
+    if (_id) {
+      const newReaction = await Thought.findByIdAndUpdate(
+        thoughtId,
+        {
+          $push: { reactions: { ...req.body } },
+        },
+        { new: true }
+      );
 
-    return res.json({ success: true, newReaction });
+      return res.json({ success: true, newReaction });
+    }
   } catch (error) {
     console.log(
       `[ERROR]: Failed to create a new reaction for present thought | ${error.message}`

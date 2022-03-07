@@ -3,14 +3,18 @@ const { User } = require("../../models");
 const createFriendForUser = async (req, res) => {
   try {
     const { userId } = req.params;
-    const newFriend = await User.findByIdAndUpdate(
-      userId,
-      {
-        $push: { friends: req.body._id },
-      },
-      { new: true }
-    ).populate("friends");
-    return res.json({ success: true, newFriend });
+    const { _id } = req.body;
+
+    if (_id) {
+      const newFriend = await User.findByIdAndUpdate(
+        userId,
+        {
+          $push: { friends: req.body._id },
+        },
+        { new: true }
+      ).populate("friends");
+      return res.json({ success: true, newFriend });
+    }
   } catch (error) {
     console.log(`[ERROR]: Failed to create new friend | ${error.message}`);
     return res
